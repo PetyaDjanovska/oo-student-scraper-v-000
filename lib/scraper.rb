@@ -5,17 +5,24 @@ require 'nokogiri'
 class Scraper
 
   def self.scrape_index_page(index_url)
-    page = Nokogiri::HTML(open(index_url))
-    students = []
-    page.css(".student-card").each do |student|
-      student = {
-        :profile_url => student.css("a").attribute("href").value,
-        :name => student.css("h4.student-name").text,
-        :location => student.css("p.student-location").text
-      }
-      students << student
+    page = Nokogiri::HTML(open("http://www.guinnessworldrecords.com/records/showcase/sports-and-strength"))
+    page.css("div.masonry explore-list-inner a").each do |article|
+      title = article.css("figure.result-media img").attribute("alt").text
+      url = "http://www.guinnessworldrecords.com" + article.css("a").attribute("href").value
+      student = Student.new(title, url)
     end
-    students
+    Student.all
+    binding.pry
+    # students = []
+    # page.css(".student-card").each do |student|
+    #   student = {
+    #     :profile_url => student.css("a").attribute("href").value,
+    #     :name => student.css("h4.student-name").text,
+    #     :location => student.css("p.student-location").text
+    #   }
+    #   students << student
+    # end
+    # students
   end
 
   def self.scrape_profile_page(profile_url)
