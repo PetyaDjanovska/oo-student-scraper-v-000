@@ -6,12 +6,12 @@ class Scraper
 
   def self.scrape_index_page(index_url)
     page = Nokogiri::HTML(open("http://www.guinnessworldrecords.com/records/showcase/sports-and-strength"))
-    students = []
+    arr = []
     page.css("div.masonry a").each do |article|
       title = article.css("figure.result-media img").attribute("alt").text
       url = "http://www.guinnessworldrecords.com" + article.css("a").attribute("href").value
       student = Student.new(title, url)
-      students << student
+      arr << student
           binding.pry
     end
     Student.all
