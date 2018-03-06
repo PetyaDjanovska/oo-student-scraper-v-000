@@ -13,8 +13,8 @@ class Scraper
       student = Student.new(title, url)
       arr << student
     end
-              binding.pry
     Student.all
+                  binding.pry
 
     # students = []
     # page.css(".student-card").each do |student|
