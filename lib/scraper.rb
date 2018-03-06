@@ -12,9 +12,10 @@ class Scraper
       url = "http://www.guinnessworldrecords.com" + article.css("a").attribute("href").value
       student = Student.new(title, url)
       students << student
+          binding.pry
     end
     Student.all
-    binding.pry
+
     # students = []
     # page.css(".student-card").each do |student|
     #   student = {
