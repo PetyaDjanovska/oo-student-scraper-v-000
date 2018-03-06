@@ -9,7 +9,7 @@ class Scraper
     arr = []
     page.css("div.masonry a").each do |article|
       title = article.css("figure.result-media img").attribute("alt").text
-      url = "http://www.guinnessworldrecords.com" + article.css("a").attribute("href").value
+      url = "http://www.guinnessworldrecords.com" + article.css("a")map{|link| link['href']}[0]
       student = Student.new(title, url)
       arr << student
     end
