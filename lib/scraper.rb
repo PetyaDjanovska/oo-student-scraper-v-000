@@ -11,6 +11,7 @@ class Scraper
       title = article.css("figure.result-media img").attribute("alt").text
       url = "http://www.guinnessworldrecords.com" + article.css("a").attribute("href").value
       student = Student.new(title, url)
+      students << student
     end
     Student.all
     binding.pry
