@@ -12,8 +12,8 @@ class Scraper
       url = "http://www.guinnessworldrecords.com" + article.css("a").attribute("href").value
       student = Student.new(title, url)
       arr << student
-          binding.pry
     end
+              binding.pry
     Student.all
 
     # students = []
