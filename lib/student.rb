@@ -3,7 +3,7 @@ class Student
 
   @@all = []
 
-  def initialize(title, url)
+  def initialize(title = nil, url = nil)
     @title = title
     @url = url
     @@all << self
@@ -13,12 +13,6 @@ class Student
     @@all
   end
 
-  def self.create_from_index
-      record_1 = self.new("First record", "some url")
-      record_2 = self.new("Second recird", "another url")
-      self.all
-      binding.pry
-  end
   # attr_accessor :name, :location, :twitter, :linkedin, :github, :blog, :profile_quote, :bio, :profile_url
   #
   # @@all = []
